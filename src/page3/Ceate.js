@@ -1,17 +1,20 @@
 import { useState } from "react";
 function Create () {
     const [links,setLinks] = useState([])
-    let i = 0;
+    const [i , setI] = useState(0);
+    const [valuer,setValuer] = useState([]);
     var arr = [];
-    const addInput = () => {
-        links.push(<Input key={i}/>)
-        setLinks([links])
-        i++;    
-        console.log(links)
+    function change (a,b) {
+        console.log(a,b)
     }
+    const addInput = () => {
+    links.push(<Input hello={i} key={i} />)
+        setLinks([...links])
+        setI(i+1);
+}
     function Input (props) {
         return(
-            <input className="focus:outline-none input-b mt-3 ml-40" value={props.key} placeholder="Add a link here" />
+            <input className="focus:outline-none input-b mt-3 ml-40" onChange={ change(props.hello)} value={valuer[props.hello]} placeholder="Add a link here" />
         )
     }
     return (
